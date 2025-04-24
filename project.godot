@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://b34gl6xxg3vx1"
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
+
 [display]
 
 window/size/viewport_width=1920
@@ -26,7 +30,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fancy_editor_sounds/plugin.cfg", "res://addons/tattomoosa.spinner/plugin.cfg")
+enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg", "res://addons/tattomoosa.spinner/plugin.cfg")
 
 [input]
 

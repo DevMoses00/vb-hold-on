@@ -45,6 +45,7 @@ signal hug_count_three
 func _ready() -> void:
 	# EVERYTHING AFTER THE PRESSING START HAPPENS HERE
 	await get_tree().create_timer(2).timeout
+	SoundManager.play_bgs("Nature")
 	fade_tween_in($Logo)
 	await get_tree().create_timer(4).timeout
 	fade_tween_out($Logo)
@@ -62,6 +63,7 @@ func _ready() -> void:
 	
 	flower.play()
 	await get_tree().create_timer(2).timeout
+	SoundManager.play_sfx("Opening")
 	# Including an orb of light that the player is meant to press spacebar on, Fade in spacebar animation
 	orb_rise(orb) 
 
@@ -141,6 +143,7 @@ func _process(delta: float) -> void:
 				# different equation
 				totalspin.value += 2
 				if totalspin.value >= totalspin.max_value:
+					SoundManager.stop_all()
 					get_tree().reload_current_scene()
 func fade_tween_in(image) -> void:
 	var fadeTween = get_tree().create_tween()
@@ -180,6 +183,9 @@ func _input(event: InputEvent) -> void:
 
 func firstLogicStep():
 	# Encounter another character post animation
+	SoundManager.stop("Nature")
+	SoundManager.play_bgm("BG_Main")
+	await get_tree().create_timer(4).timeout
 	fade_tween_in(hug)
 	hug.play("hug_trans_1")
 	$Timer.start()
@@ -199,10 +205,13 @@ func huglogic():
 		camera_zoom_in()
 		if hugcount == 1:
 			hug.play("hug_1")
+			SoundManager.play_sfx("Hug1",0,-30)
 		if hugcount == 2:
 			hug.play("hug_2")
+			SoundManager.play_sfx("Hug2",0,-30)
 		if hugcount == 3:
 			hug.play("hug_3")
+			SoundManager.play_sfx("Hug3",0,-30)
 		fade_tween_out(holdon)
 		fade_tween_out(space)
 		hugplayed = true
@@ -278,7 +287,9 @@ func hugcountthree():
 	var tween = get_tree().create_tween()
 	tween.tween_property(orb, "scale",Vector2(0.3,0.3),3)
 	tween.parallel().tween_property(orb,"position", Vector2(2,81),3)
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(1).timeout
+	SoundManager.play_mfx("Mid",0,-15)
+	await get_tree().create_timer(1).timeout
 		# wait, then fade out the light ball
 	fade_tween_out(orb)
 		# fade in character holding out hands
@@ -297,16 +308,20 @@ func hugcountthree():
 	fh2.play()
 	fh3.play()
 		#[0 - 90] adjusted to the frame number
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(10).timeout
 	# fade in the gravestones in her hand
 	fade_tween_out(fh1)
 	fade_tween_in(coffin1)
-	await get_tree().create_timer(1).timeout
+	SoundManager.stop("BG_Main")
+	SoundManager.play_sfx("Hug1",0,-20)
+	await get_tree().create_timer(3).timeout
 	fade_tween_out(fh2)
 	fade_tween_in(coffin2)
-	await get_tree().create_timer(1).timeout
+	SoundManager.play_sfx("Hug2",0,-20)
+	await get_tree().create_timer(3).timeout
 	fade_tween_out(fh3)
 	fade_tween_in(coffin3)
+	SoundManager.play_sfx("Hug3",0,-20)
 	await get_tree().create_timer(7).timeout
 		# have a tear roll down characters eye maybe
 	fade_tween_out(handcover)
@@ -316,6 +331,8 @@ func hugcountthree():
 	fade_tween_out(coffin3)
 	fade_tween_out(timespin)
 	fade_tween_in($Closing)
+	await get_tree().create_timer(5).timeout
+	SoundManager.play_bgm("BG_Soft",2.0)
 	# turn off a bunch of different visuals to hard cut to the grave yard
 		# cut to end visual, which is character at the graveyard
 	await get_tree().create_timer(4).timeout
@@ -323,7 +340,7 @@ func hugcountthree():
 	tweenhug.tween_property(hugspin,"position", Vector2(46,-160),2)
 	tweenhug.parallel().tween_property(secondhugspin,"position", Vector2(400,-365),2)
 	tweenhug.parallel().tween_property(thirdhugspin,"position", Vector2(590,-10),2)
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(8).timeout
 	timercount()
 	# score is calculated into one whole progress bar, while the other progress-
 			# bars are set to 0 
@@ -370,18 +387,20 @@ func timercount():
 		totalspin.value += 1
 		await get_tree().create_timer(.01).timeout
 	
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(9).timeout
 	fade_tween_out($Closing)
 	fade_tween_in($End)
+	SoundManager.stop("BG_Soft")
+	SoundManager.play_bgs("Nature")
 	var tween = get_tree().create_tween()
 	tween.tween_property(totalspin, "position", Vector2(280,-500),1.5)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(5).timeout
 	fade_tween_in($phrase)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	for x in totalhug:
 		totalspin.value -= 1
 		await get_tree().create_timer(.01).timeout
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(5).timeout
 	endgame = true
 	fade_tween_in($spaceend)
 	

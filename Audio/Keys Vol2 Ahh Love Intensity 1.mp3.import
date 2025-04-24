@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kim4lwm2btai"
+path="res://.godot/imported/Keys Vol2 Ahh Love Intensity 1.mp3-ff1c74c1dce8deb2b6052e42433705e9.mp3str"
+
+[deps]
+
+source_file="res://Audio/Keys Vol2 Ahh Love Intensity 1.mp3"
+dest_files=["res://.godot/imported/Keys Vol2 Ahh Love Intensity 1.mp3-ff1c74c1dce8deb2b6052e42433705e9.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

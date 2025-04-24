@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7m7kbd0s4tsb"
+path="res://.godot/imported/Bright Ambient_5.wav-7d641c289c4b3864caeb35fc3db53e07.sample"
+
+[deps]
+
+source_file="res://Audio/Bright Ambient_5.wav"
+dest_files=["res://.godot/imported/Bright Ambient_5.wav-7d641c289c4b3864caeb35fc3db53e07.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
