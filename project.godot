@@ -13,6 +13,8 @@ config_version=5
 config/name="Hold On"
 run/main_scene="uid://bsc7oxcm6ighf"
 config/features=PackedStringArray("4.4")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://b34gl6xxg3vx1"
 config/icon="res://icon.svg"
 
 [display]
@@ -38,3 +40,4 @@ Space={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

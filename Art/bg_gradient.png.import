@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/bg_gradient.png-bb7d609205e0c627b37109eb86c0e
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
