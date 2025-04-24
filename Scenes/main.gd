@@ -196,6 +196,7 @@ func firstLogicStep():
 
 func huglogic():
 	if hugplayed == false:
+		camera_zoom_in()
 		if hugcount == 1:
 			hug.play("hug_1")
 		if hugcount == 2:
@@ -212,6 +213,7 @@ func _on_timer_timeout() -> void:
 func hugcountone():
 	# have the hugger fade away, then the world keeps moving on
 	await get_tree().create_timer(2).timeout
+	camera_zoom_out()
 	spinnerback()
 	fade_tween_out(hug)
 	# fade the character so that they are older now
@@ -237,6 +239,7 @@ func hugcountone():
 func hugcounttwo():
 	# have the hugger fade away, then the world keeps moving on
 	await get_tree().create_timer(2).timeout
+	camera_zoom_out()
 	spinnerback()
 	fade_tween_out(hug)
 	# fade the character so that they are older now
@@ -260,6 +263,7 @@ func hugcounttwo():
 
 func hugcountthree():
 	# signal connect to endgame
+	camera_zoom_out()
 	await get_tree().create_timer(2).timeout
 	$Timer.stop()
 	fade_tween_out(space)
@@ -338,6 +342,14 @@ func spinnerback():
 	elif spinnervar == thirdhugspin:
 		tween.tween_property(spinnervar,"position", Vector2(420,-500),2)
 
+func camera_zoom_in():
+	var tween = get_tree().create_tween()
+	tween.tween_property($Camera2D,"zoom", Vector2(1.1,1.1),4).set_ease(Tween.EASE_OUT_IN)
+
+func camera_zoom_out():
+	var tween = get_tree().create_tween()
+	tween.tween_property($Camera2D,"zoom", Vector2(1.0,1.0),4).set_ease(Tween.EASE_OUT_IN)
+	
 func timercount():
 	var totalhug = hugspin.value + secondhugspin.value + thirdhugspin.value
 	print(totalspin.value)

@@ -581,7 +581,7 @@ animations = [{
 "duration": 100.0,
 "texture": ExtResource("96_o2owy")
 }],
-"loop": false,
+"loop": true,
 "name": &"Hold",
 "speed": 20.0
 }, {
@@ -851,7 +851,7 @@ thirdhugspin = NodePath("HugSpin3")
 totalspin = NodePath("TotalSpinner")
 eyes = NodePath("Eyes")
 orb = NodePath("Orb")
-foreground = NodePath("Foreground")
+foreground = NodePath("Camera2D/Foreground")
 flower = NodePath("Flowers")
 hug = NodePath("Hug")
 holdon = NodePath("HoldOn")
@@ -868,14 +868,12 @@ coffin3 = NodePath("Coffin3")
 [node name="Background" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bo1nx")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Eyes" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-440, -212)
 sprite_frames = SubResource("SpriteFrames_ueoa1")
 autoplay = "default"
-frame_progress = 0.684677
+frame_progress = 0.160956
 
 [node name="Flowers" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 133)
@@ -887,7 +885,7 @@ position = Vector2(2, 81)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kqrg6")
 autoplay = "default"
-frame_progress = 0.31411
+frame_progress = 0.16718
 
 [node name="Hug" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -916,6 +914,7 @@ position = Vector2(-519, 378)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_ylsbi")
 animation = &"Hold"
+autoplay = "Hold"
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -1365,7 +1364,10 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -171)
 texture = ExtResource("151_r1tr8")
 
-[node name="Foreground" type="AnimatedSprite2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+
+[node name="Foreground" type="AnimatedSprite2D" parent="Camera2D"]
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_8gbba")
 

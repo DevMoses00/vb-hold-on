@@ -26,7 +26,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/tattomoosa.spinner/plugin.cfg")
+enabled=PackedStringArray("res://addons/fancy_editor_sounds/plugin.cfg", "res://addons/tattomoosa.spinner/plugin.cfg")
 
 [input]
 
